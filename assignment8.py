@@ -61,6 +61,6 @@ def todb():
  cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s",weatherReport)
  return currentWeather
 
-# if __name__ == "__main__":
-#   #Application runs on port 3000
-#   app.run(host="0.0.0.0", port='3000', debug=1)
+if __name__ == "__main__":
+  #Application runs on port 3000
+  app.run(host="0.0.0.0", port='3000', debug=1)
