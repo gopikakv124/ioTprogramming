@@ -15,11 +15,11 @@ import requests
 #Read OpenWeatherMap API usage here - https://openweathermap.org/api/one-call-api
 
 #Insert your OpenWeatherMap API here
-OPEN_WEATHER_MAP_API_KEY = "95c24917f8cc445dad4ea6113a933807"
+OPEN_WEATHER_MAP_API_KEY = "d73e5f4f73d78ea37cfad6b12aa97bf0"
 
 #give your Lattitude and Longitude
-lat = '8.01'
-lon = '77.05'
+lat = '10.9'
+lon = '75.9167'
 
 #Create openweathermap url
 api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(lon)+"&exclude=hourly,daily,minutely,alerts+&appid="+OPEN_WEATHER_MAP_API_KEY+"&units=metric"
