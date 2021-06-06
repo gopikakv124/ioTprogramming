@@ -55,7 +55,7 @@ def todb():
  cur=conn.cursor()
  
  #Table 1 shows realtime weather
- cur.execute("INSERT INTO currentWeatherTable (wind_speed, Pressure, dt, feels_like, humidity, temp ) VALUES (%(wind_speed)s, %(Pressure)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
+ cur.execute("INSERT INTO currentWeatherTable (Pressure, dt, feels_like, humidity, temp ) VALUES (%(Pressure)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
  
  #Table 2 shows summary
  cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s",weatherReport)
