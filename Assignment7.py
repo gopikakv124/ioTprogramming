@@ -30,11 +30,11 @@ app = Flask(__name__)
 def get_open_weather_map_data():
   
   #For Python2
-  #response = urlopen(api_url).read()
+  response = urlopen(api_url).read()
   #response  = urlopen(api_url).read()
   
   #For Python3
-  response = requests.get(api_url).json()
+  #response = requests.get(api_url).json()
   
   print(response)
   return response
