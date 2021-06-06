@@ -43,21 +43,22 @@ def get_open_weather_map_data():
 def todb():
  
  #receiving data from OpenWeatherMap
- response = requests.get(api_url).json()
+ #response = requests.get(api_url).json()
+ response = urlopen(api_url).read()
  
  #Cleaning the data to make it look tidy
  currentWeather = response['current']
  weatherReport = currentWeather['weather'][0]
  
  #Connect to MySQL DB (Not tested, May have errors!)
- conn = pymysql.connect(database="WeatherDB",user="admin",password="admin",host="localhost")
+ conn = pymysql.connect(database="WeatherDB",user="gopikakv",password="assignment2",host="localhost")
  cur=conn.cursor()
  
  #Table 1 shows realtime weather
- cur.execute("INSERT INTO currentWeatherTable (clouds, dew_point, dt, feels_like, humidity, temp ) VALUES (%(clouds)s, %(dew_point)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
+ cur.execute("INSERT INTO currentWeatherTable (wind_speed, Pressure, dt, feels_like, humidity, temp ) VALUES (%(wind_speed)s, %(Pressure)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
  
  #Table 2 shows summary
- cur.execute("INSERT INTO weatherSummaryTable (id, description, icon, main) VALUES (%(id)s, %(description)s, %(icon)s, %(main)s)",weatherReport)
+ cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s",weatherReport)
  return currentWeather
 
 if __name__ == "__main__":
