@@ -36,7 +36,7 @@ def get_open_weather_map_data():
   #For Python3
   #response = requests.get(api_url).json()
   
-  print(response)
+  #print(response)
   return response
 
  #To save API response to mySQL
