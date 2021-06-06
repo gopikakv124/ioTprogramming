@@ -44,8 +44,8 @@ def get_open_weather_map_data():
 def todb():
  
  #receiving data from OpenWeatherMap
- response = requests.get(api_url).json()
- #response = urlopen(api_url).read()
+ #response = requests.get(api_url).json()
+ response = urlopen(api_url).read()
  
  #Cleaning the data to make it look tidy
  currentWeather = response['current']
