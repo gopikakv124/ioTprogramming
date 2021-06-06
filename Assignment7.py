@@ -10,7 +10,7 @@ import pymysql
 ##from urllib2 import urlopen
 
 #For Python3 only
-import requests
+#import requests
 
 
 #Read OpenWeatherMap API usage here - https://openweathermap.org/api/one-call-api
