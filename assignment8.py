@@ -6,7 +6,7 @@ from flask import Flask
 import pymysql
 
 #Library to access external APIs (NOTE: This may not work with python3)
-#from urllib.request import urlopen
+from urllib.request import urlopen
 
 #For Python3 only
 import requests
