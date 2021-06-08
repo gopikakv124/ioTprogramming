@@ -63,7 +63,7 @@ def todb():
  conn.commit()
  def todb():
  
- return currentWeather
+return currentWeather
 
 
 
