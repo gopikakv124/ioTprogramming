@@ -60,9 +60,10 @@ def todb():
  
  #Table 2 shows summary
  cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s",weatherReport)
+ conn.commit()
  
  return currentWeather
-conn.commit()
+
 
 
 if __name__ == "__main__":
