@@ -57,9 +57,13 @@ def todb():
  #Table 1 shows realtime weather
  cur.execute("INSERT INTO currentWeatherTable (Pressure, dt, feels_like, humidity, temp ) VALUES (%(Pressure)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
  
+ 
  #Table 2 shows summary
  cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s",weatherReport)
+ 
  return currentWeather
+conn.commit()
+
 
 if __name__ == "__main__":
   #Application runs on port 3000
