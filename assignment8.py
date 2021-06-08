@@ -62,7 +62,7 @@ def todb():
  cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s",weatherReport)
  conn.commit()
  def todb():
- return currentWeather
+  return currentWeather
 
 
 
