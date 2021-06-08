@@ -63,10 +63,7 @@ def todb():
  conn.commit()
  def todb():
   return currentWeather
- data1=cur.fetchone()
- data2=cur.fetchall()
- print(data1)
- print(data2)
+ 
 
 
 
