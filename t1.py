@@ -3,13 +3,13 @@ import pymysql
 #Library to access external APIs (NOTE: This may not work with python3)
 #from urllib.request import urlopen
 #For Python3 only
-import requests
+#import requests
 #Read OpenWeatherMap API usage here - https://openweathermap.org/api/one-call-api
 #Insert your OpenWeatherMap API here
-OPEN_WEATHER_MAP_API_KEY = "725c333a25aff972c5d64b34616da787"
+OPEN_WEATHER_MAP_API_KEY = "d73e5f4f73d78ea37cfad6b12aa97bf0"
 #give your Lattitude and Longitude
-lat = '9.557270'
-lon = '76.789436'
+lat = '10.9'
+lon = '75.9167'
 #Create openweathermap url
 api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+str(lat)+"&lon="+str(lon)+"&exclude=hourly,daily,minutely,alerts+&ap
 pid="+OPEN_WEATHER_MAP_API_KEY+"&units=metric"
@@ -17,16 +17,17 @@ app = Flask(__name__)
 @app.route('/fetchWeather')
 def get_open_weather_map_data():
     #For Python2
-    #response = urlopen(api_url).read()
+    response = urlopen(api_url).read()
     #For Python3
-    response = requests.get(api_url).json()
+    #response = requests.get(api_url).json()
         print(response)
     return response
 #To save API response to mySQL
 @app.route('/todb')
 def todb():
     #receiving data from OpenWeatherMap
-    response = requests.get(api_url).json()
+    response = urlopen(api_url).read()
+    #response = requests.get(api_url).json()
     #Cleaning the data to make it look tidy
     currentWeather = response['current']
     key1 =['clouds', 'dew_point', 'dt', 'feels_like','humidity','temp']
@@ -38,16 +39,15 @@ def todb():
     weatherReport = {key: weatherReport[0].get(key) for key in key2}
     #print(weatherReport)
     #Connect to MySQL DB (Not tested, May have errors!)
-    conn = pymysql.connect(database="WeatherDB",user="lakshmi",password="iotassignment",host="localhost")
+    conn = pymysql.connect(database="WeatherDB",user="gopikakv",password="assignment2",host="localhost")
     cur=conn.cursor()
     #Table 1 shows realtime weather
-    cur.execute("INSERT INTO currentWeatherTable (clouds, dew_point, dt, feels_like, humidity, temp ) VALUES (%(clouds)s, %(dew_point
-)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
+    cur.execute("INSERT INTO currentWeatherTable (Pressure, dt, feels_like, humidity, temp ) VALUES (%(Pressure)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
 
     #Table 2 shows summary
-    cur.execute("INSERT INTO weatherSummaryTable (id, description, icon, main) VALUES (%(id)s, %(description)s, %(icon)s, %(main)s)",
-weatherReport)
+    cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s",weatherReport)
     conn.commit()
+    def todb():
     return currentWeather
 if __name__ == "__main__":
     #Application runs on port 5000
