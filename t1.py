@@ -31,12 +31,12 @@ def todb():
     #response = requests.get(api_url).json()
     #Cleaning the data to make it look tidy
     currentWeather = response['current']
-    key1 =['clouds', 'dew_point', 'dt', 'feels_like','humidity','temp']
+    key1 =['pressure', 'dt','feels_like','humidity','temp']
     currentWeather = {key: currentWeather.get(key) for key in key1}
     #print(currentWeather)
     weatherReport = response['current']['weather']
     #print(weatherReport)
-    key2 =['id', 'description', 'icon', 'main']
+    key2 =['id', 'description']
     weatherReport = {key: weatherReport[0].get(key) for key in key2}
     #print(weatherReport)
     #Connect to MySQL DB (Not tested, May have errors!)
