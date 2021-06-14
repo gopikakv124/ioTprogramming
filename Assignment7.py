@@ -64,4 +64,4 @@ def todb():
 
 if __name__ == "__main__":
   #Application runs on port 3000
-  app.run(host="0.0.0.0", port='3000', debug=1)
+  app.run(host="0.0.0.0", port='5000', debug=1)
