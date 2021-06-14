@@ -59,7 +59,7 @@ def todb():
  cur.execute("INSERT INTO currentWeatherTable (wind_speed, Pressure, dt, feels_like, humidity, temp ) VALUES (%(wind_speed)s, %(Pressure)s, %(dt)s, %(feels_like)s, %(humidity)s, %(temp)s )",currentWeather)
  
  #Table 2 shows summary
- cur.execute("INSERT INTO weatherSummaryTable (id, description) VALUES (%(id)s, %(description)s, %(icon)s, %(main)s)",weatherReport)
+ cur.execute("INSERT INTO weatherSummaryTable (id, description, icon, main) VALUES (%(id)s, %(description)s, %(icon)s, %(main)s)",weatherReport)
  return currentWeather
 
 if __name__ == "__main__":
